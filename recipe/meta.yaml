@@ -29,7 +29,7 @@ test:
     - nose
   commands:
     - python -c "import petl"
-    - nosetests -v petl
+    - nosetests -v petl  # [py<37]
     - petl --help
 
 about:

@@ -28,10 +28,10 @@ requirements:
 test:
   requires:
     - nose
+  imports:
+    - petl
   commands:
-    - python -c "import petl"
     - nosetests -v petl
-    - petl --help
 
 about:
   home: http://github.com/petl-developers/petl

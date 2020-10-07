@@ -1,0 +1,17 @@
+diff --git a/petl/test/io/.test_xml.py.swp b/petl/test/io/.test_xml.py.swp
+deleted file mode 100644
+index ccee976..0000000
+Binary files a/petl/test/io/.test_xml.py.swp and /dev/null differ
+diff --git a/petl/test/io/test_xml.py b/petl/test/io/test_xml.py
+index 4093f93..ede9999 100644
+--- a/petl/test/io/test_xml.py
++++ b/petl/test/io/test_xml.py
+@@ -205,7 +205,7 @@ def test_fromxml_url():
+     else:
+         actual = fromxml(url, 'pydev_property', {'name': ( '.', 'name'), 'prop': '.'})
+         assert nrows(actual) > 0
+-        expect = fromxml('.pydevproject', 'pydev_property', {'name': ( '.', 'name'), 'prop': '.'})
++        expect = fromxml('pydevproject', 'pydev_property', {'name': ( '.', 'name'), 'prop': '.'})
+         ieq(expect, actual)
+ 
+ 

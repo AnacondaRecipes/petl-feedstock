@@ -27,7 +27,7 @@ requirements:
 
 test:
   files:
-    - pydevproject
+    - .pydevproject
   requires:
     - nose
   imports:

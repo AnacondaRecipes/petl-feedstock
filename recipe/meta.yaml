@@ -1,48 +1,79 @@
 {% set name = "petl" %}
-{% set version = "1.7.4" %}
-{% set sha256 = "e57d9d50397e35a0aead8c028494474742edb9b320a89472207778241f57b694" %}
+{% set version = "1.7.17" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 802696187c2ef35894c4acf3c0ff9fecff6035cb335944c194416b9a18e8390b
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - pip
     - python
-    - setuptools
-    - setuptools_scm
+    - wheel
+    - setuptools >18.0
+    - setuptools_scm >1.5.4
   run:
     - python
+  run_constrained:
+    # avro
+    - fastavro >=0.24.0
+    # bcolz
+    - bcolz >=1.2.1
+    # db
+    - SQLAlchemy >=1.3.6,<2.0
+    # numpy
+    - numpy >=1.16.4
+    # hdf5
+    - cython >=0.29.13
+    - numexpr >=2.6.9
+    - pytables >=3.5.2
+    # http
+    - aiohttp >=3.6.2
+    # interval
+    - intervaltree >=3.0.2
+    # pandas
+    - pandas >=0.24.2
+    # remote
+    - fsspec >=0.7.4
+    # smb
+    - smbprotocol >=1.0.1
+    # xls
+    - xlrd >=2.0.1
+    - xlwt >=1.3.0
+    # xlsx
+    - openpyxl >=2.6.2
+    # xpath
+    - lxml >=4.4.0
 
 test:
-  files:
-    - pydevproject
-  requires:
-    - nose
   imports:
     - petl
   commands:
-    - nosetests -v petl
+    - pip check
+    # [Errno 2] No such file or directory: '$PREFIX/lib/python3.10/site-packages/petl/test/resources/test.xml'
+    - pytest --pyargs petl.test --deselect=io/test_xml.py::test_fromxml_url
+  requires:
+    - pip
+    - pytest
 
 about:
-  home: http://github.com/petl-developers/petl
-  license: MIT
-  license_file: LICENSE.txt
+  home: https://github.com/petl-developers/petl
   summary: A Python package for extracting, transforming and loading tables of data.
-  doc_url: http://petl.readthedocs.io/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt
+  description: |
+    petl is a general purpose Python package for extracting, transforming and loading tables of data.
+  doc_url: https://petl.readthedocs.io
   dev_url: https://github.com/petl-developers/petl
-  doc_source_url: https://github.com/petl-developers/petl/blob/master/docs/index.rst
 
 extra:
   recipe-maintainers:

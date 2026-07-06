@@ -1,13 +1,13 @@
 {% set name = "petl" %}
-{% set version = "1.7.17" %}
+{% set version = "1.7.19" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 802696187c2ef35894c4acf3c0ff9fecff6035cb335944c194416b9a18e8390b
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 238ff9ad3a85fcbbd041a8c24cfbcf6dd9e969f736b71b8ae25064648db0b0a0
 
 build:
   number: 0

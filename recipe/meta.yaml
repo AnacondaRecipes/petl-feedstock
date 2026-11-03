@@ -1,5 +1,5 @@
 {% set name = "petl" %}
-{% set version = "1.7.30" %}
+{% set version = "1.7.31" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9621fe7f9d81dafec3bf440496118ec1b288215400810a90f683a02c6d120792
+  sha256: 5cdd838b64df73e30b1755a3724c33307169b6c3d39b4bdaad1e0a71fcc790e2
 
 build:
   number: 0
@@ -28,7 +28,7 @@ requirements:
     # bcolz
     - bcolz >=1.2.1
     # db
-    - SQLAlchemy >=1.3.6,<2.0
+    - SQLAlchemy >=1.3.6
     # numpy
     - numpy >=1.16.4
     # hdf5
